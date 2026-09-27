@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>BIKY HARDWARE</title>
+<style>
+:root{--red:#e63946;--dark:#17202a;--yellow:#ffd166;--light:#f6f8fa;--green:#168a55}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--light);color:var(--dark)}
+header{background:var(--dark);color:#fff;position:sticky;top:0;z-index:10}
+.nav{max-width:1200px;margin:auto;padding:15px 20px;display:flex;align-items:center;gap:24px}
+.logo{font-size:24px;font-weight:800;color:var(--yellow);white-space:nowrap}
+nav{display:flex;gap:18px;flex:1}nav a{color:#fff;text-decoration:none;font-weight:600}
+button{border:0;border-radius:7px;padding:11px 16px;font-weight:700;cursor:pointer}
+.cart-btn{background:var(--yellow);color:var(--dark)}
+.hero{background:linear-gradient(120deg,#e63946,#f77f00);color:white;padding:65px 20px}
+.hero-inner{max-width:1200px;margin:auto}.hero h1{font-size:clamp(32px,6vw,64px);margin:0 0 12px}
+.hero p{font-size:20px;max-width:620px}.hero button{background:#fff;color:var(--red)}
+.container{max-width:1200px;margin:35px auto;padding:0 20px}
+.section-head{display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+h2{margin:0 0 20px}.filters{display:flex;gap:10px;flex-wrap:wrap;margin:20px 0}
+input,select,textarea{width:100%;padding:12px;border:1px solid #ccd3da;border-radius:6px;font:inherit}
+.search{max-width:340px}.chips button{background:#fff;border:1px solid #ddd}.chips button.active{background:var(--red);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+.card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px #00000012}
+.card img{width:100%;height:170px;object-fit:cover}.card-body{padding:15px}
+.card h3{margin:0 0 8px}.price{font-size:20px;font-weight:800;color:var(--red)}
+.old{text-decoration:line-through;color:#8993a0;font-size:14px;margin-left:7px}.badge{background:var(--yellow);padding:4px 7px;border-radius:4px;font-size:12px;font-weight:bold}
+.card button{background:var(--red);color:#fff;width:100%;margin-top:12px}
+.offer{background:var(--dark);color:white;padding:28px;border-radius:8px;margin-bottom:35px}
+.offer strong{color:var(--yellow)}
+footer{background:var(--dark);color:#fff;margin-top:50px;padding:35px 20px}
+.footer-inner{max-width:1200px;margin:auto;display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+footer a{color:var(--yellow)}.empty{padding:25px;background:#fff;border-radius:8px;text-align:center}
+.modal{display:none;position:fixed;inset:0;background:#0008;z-index:20;align-items:center;justify-content:center;padding:15px}
+.modal.open{display:flex}.modal-box{background:white;border-radius:8px;max-width:560px;width:100%;max-height:92vh;overflow:auto;padding:22px}
+.close{float:right;background:#eee;padding:5px 10px}.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cart-line{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid #eee;padding:12px 0}
+.qty button{padding:4px 9px;background:#eee}.total{font-size:20px;font-weight:bold;margin:18px 0}
+.whatsapp{background:var(--green);color:#fff;width:100%;font-size:16px}
+@media(max-width:700px){nav{display:none}.nav{justify-content:space-between}.row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header>
+  <div class="nav">
+    <div class="logo">BIKY HARDWARE</div>
+    <nav>
+      <a href="#home">Home</a><a href="#products">Products</a><a href="#offers">Offers</a><a href="#about">About</a><a href="#contact">Contact</a>
+    </nav>
+    <button class="cart-btn" onclick="openCart()">Cart (<span id="cartCount">0</span>)</button>
+  </div>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-inner">
+    <h1>Everything for your next project.</h1>
+    <p>Hardware, plumbing, cement, paint, auto parts and machine items at reliable prices in Nepal.</p>
+    <button onclick="document.querySelector('#products').scrollIntoView()">Shop Products</button>
+  </div>
+</section>
+
+<main class="container">
+  <section class="offer" id="offers">
+    <h2>BIKY Mega Deals</h2>
+    <p>Special prices on selected hardware items. Order through WhatsApp and confirm your delivery.</p>
+    <strong>Cash on delivery available.</strong>
+  </section>
+
+  <section id="products">
+    <div class="section-head"><h2>Featured Products</h2><input class="search" id="search" placeholder="Search products..." oninput="render()"></div>
+    <div class="filters chips" id="categories"></div>
+    <div class="grid" id="productGrid"></div>
+  </section>
+
+  <section id="about" style="margin-top:55px">
+    <h2>About BIKY HARDWARE</h2>
+    <p>BIKY HARDWARE supplies dependable construction, plumbing, painting, machine and automobile products for homes, workshops and building projects.</p>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="footer-inner">
+    <div><h2>BIKY HARDWARE</h2><p>Your trusted hardware shop.</p></div>
+    <div><b>Contact</b><p>Phone: <a href="tel:+9779821183762">+9779821183762</a><br>
+    WhatsApp: <a href="https://wa.me/9779704687196" target="_blank">Chat on WhatsApp</a><br>
+    <a href="https://www.facebook.com/profile.php?id=61591774740573" target="_blank">Facebook</a></p></div>
+  </div>
+</footer>
+
+<div class="modal" id="cartModal">
+  <div class="modal-box">
+    <button class="close" onclick="closeCart()">X</button>
+    <h2>Your Order</h2>
+    <div id="cartItems"></div>
+    <div class="total">Subtotal: NPR <span id="subtotal">0</span></div>
+    <p>Delivery charge: NPR 150 inside the delivery area.</p>
+    <hr>
+    <h3>Delivery Details</h3>
+    <div class="row">
+      <input id="customerName" placeholder="Full name" required>
+      <input id="customerPhone" placeholder="Phone number" required>
+    </div>
+    <br>
+    <input id="customerAddress" placeholder="Delivery address" required><br><br>
+    <textarea id="customerNote" placeholder="Additional note (optional)" rows="3"></textarea><br><br>
+    <button class="whatsapp" onclick="sendOrder()">Confirm Order on WhatsApp</button>
+    <p style="font-size:13px;color:#68717b">Your order is sent to WhatsApp before confirmation. Payment method: Cash on Delivery.</p>
+  </div>
+</div>
+
+<script>
+const products=[
+ {id:1,name:"Premium Cement 50kg",cat:"Cement & Rod",price:920,old:1000,img:"https://images.unsplash.com/photo-1513467535987-fd81bc7d62f8?auto=format&fit=crop&w=700&q=80"},
+ {id:2,name:"TMT Steel Rod",cat:"Cement & Rod",price:118,img:"https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?auto=format&fit=crop&w=700&q=80"},
+ {id:3,name:"Interior Wall Paint",cat:"Paints",price:2450,old:2800,img:"https://images.unsplash.com/photo-1562259949-e8e7689d7828?auto=format&fit=crop&w=700&q=80"},
+ {id:4,name:"PVC Water Pipe",cat:"Plumbing",price:680,img:"https://images.unsplash.com/photo-1585704032915-c3400ca199e7?auto=format&fit=crop&w=700&q=80"},
+ {id:5,name:"Adjustable Wrench Set",cat:"Hardware",price:1450,img:"https://images.unsplash.com/photo-1530124566582-a618bc2615dc?auto=format&fit=crop&w=700&q=80"},
+ {id:6,name:"Car Engine Oil",cat:"Auto Parts",price:1250,old:1400,img:"https://images.unsplash.com/photo-1635784063382-5f6f9e9b4f7f?auto=format&fit=crop&w=700&q=80"},
+ {id:7,name:"Electric Drilling Machine",cat:"Machines",price:5750,img:"https://images.unsplash.com/photo-1504148455328-c376907d081c?auto=format&fit=crop&w=700&q=80"},
+ {id:8,name:"Safety Helmet",cat:"Hardware",price:550,img:"https://images.unsplash.com/photo-1586864387967-d02ef85d93e8?auto=format&fit=crop&w=700&q=80"}
+];
+let cart={},active="All";
+const money=n=>n.toLocaleString("en-IN");
+function init(){
+ const cats=["All",...new Set(products.map(p=>p.cat))];
+ document.getElementById("categories").innerHTML=cats.map(c=>`<button class="${c==="All"?"active":""}" onclick="active='${c}';document.querySelectorAll('.chips button').forEach(x=>x.classList.remove('active'));this.classList.add('active');render()">${c}</button>`).join("");
+ render();
+}
+function render(){
+ const q=document.getElementById("search").value.toLowerCase();
+ const list=products.filter(p=>(active==="All"||p.cat===active)&&p.name.toLowerCase().includes(q));
+ document.getElementById("productGrid").innerHTML=list.length?list.map(p=>`
+ <article class="card"><img src="${p.img}" alt="${p.name}">
+ <div class="card-body"><span class="badge">${p.cat}</span><h3>${p.name}</h3>
+ <div class="price">NPR ${money(p.price)} ${p.old?`<span class="old">NPR ${money(p.old)}</span>`:""}</div>
+ <small>Quality product with delivery available.</small>
+ <button onclick="add(${p.id})">Add to Cart</button></div></article>`).join(""):`<div class="empty">No products found.</div>`;
+}
+function add(id){cart[id]=(cart[id]||0)+1;update();openCart()}
+function update(){document.getElementById("cartCount").textContent=Object.values(cart).reduce((a,b)=>a+b,0)}
+function openCart(){document.getElementById("cartModal").classList.add("open");drawCart()}
+function closeCart(){document.getElementById("cartModal").classList.remove("open")}
+function drawCart(){
+ let total=0,html="";
+ Object.entries(cart).forEach(([id,qty])=>{let p=products.find(x=>x.id==id),line=p.price*qty;total+=line;
+ html+=`<div class="cart-line"><span>${p.name}<br>NPR ${money(p.price)} x ${qty}</span><span class="qty"><button onclick="change(${id},-1)">-</button> ${qty} <button onclick="change(${id},1)">+</button></span></div>`});
+ document.getElementById("cartItems").innerHTML=html||"<div class='empty'>Your cart is empty.</div>";
+ document.getElementById("subtotal").textContent=money(total);
+}
+function change(id,n){cart[id]+=n;if(cart[id]<=0)delete cart[id];update();drawCart()}
+function sendOrder(){
+ if(!Object.keys(cart).length)return alert("Please add a product first.");
+ const name=document.getElementById("customerName").value.trim(),phone=document.getElementById("customerPhone").value.trim(),address=document.getElementById("customerAddress").value.trim(),note=document.getElementById("customerNote").value.trim();
+ if(!name||!phone||!address)return alert("Please enter your name, phone number and delivery address.");
+ let total=150,lines=Object.entries(cart).map(([id,qty])=>{let p=products.find(x=>x.id==id);total+=p.price*qty;return `- ${p.name} x ${qty} = NPR ${money(p.price*qty)}`});
+ const msg=`BIKY HARDWARE ORDER%0A%0ACustomer: ${name}%0APhone: ${phone}%0AAddress: ${address}%0A%0AProducts:%0A${lines.join("%0A")}%0A%0ADelivery charge: NPR 150%0ATotal: NPR ${money(total)}%0APayment: Cash on Delivery${note?`%0ANote: ${note}`:""}%0A%0APlease confirm my order.`;
+ window.open(`https://wa.me/9779704687196?text=${msg}`,"_blank");
+}
+init();
+</script>
+</body>
+</html>
